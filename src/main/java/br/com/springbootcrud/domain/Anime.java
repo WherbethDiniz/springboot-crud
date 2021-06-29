@@ -14,6 +14,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Entity
 public class Anime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
