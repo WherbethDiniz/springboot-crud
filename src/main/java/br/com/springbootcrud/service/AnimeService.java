@@ -8,6 +8,7 @@ import br.com.springbootcrud.requests.AnimePostRequestBody;
 import br.com.springbootcrud.requests.AnimePutRequestBody;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -31,6 +32,7 @@ public class AnimeService {
 
     }
 
+    @Transactional
     public Anime save(AnimePostRequestBody animePostRequestBody) {
         return animeRepository.save(AnimeMapper.INSTANCE.ToAnime(animePostRequestBody));
 
