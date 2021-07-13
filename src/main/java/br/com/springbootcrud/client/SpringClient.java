@@ -27,7 +27,7 @@ public class SpringClient {
         log.info(animeList.getBody());
 
 //        Anime Kingdom = Anime.builder().name("Kingdom").build();
-//          Anime kingdomSaved = new RestTemplate().postForObject("http://localhost:8080/animes/", Kingdom, Anime.class);
+//        Anime kingdomSaved = new RestTemplate().postForObject("http://localhost:8080/animes/", Kingdom, Anime.class);
 //        log.info("saved anime {}", kingdomSaved);
 
         Anime samurai = Anime.builder().name("Samurai").build();
