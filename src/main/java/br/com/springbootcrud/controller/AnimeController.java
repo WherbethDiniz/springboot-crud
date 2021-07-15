@@ -3,7 +3,6 @@ import br.com.springbootcrud.domain.Anime;
 import br.com.springbootcrud.requests.AnimePostRequestBody;
 import br.com.springbootcrud.requests.AnimePutRequestBody;
 import br.com.springbootcrud.service.AnimeService;
-import br.com.springbootcrud.util.DateUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
@@ -13,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -22,18 +20,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AnimeController {
 
-    private final DateUtil dateUtil;
     private final AnimeService animeService;
 
     @GetMapping
     public ResponseEntity<Page<Anime>> list(Pageable pageable) {
-        log.info(dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
         return ResponseEntity.ok(animeService.listAll(pageable));
     }
 
     @GetMapping(path = "/all")
     public ResponseEntity<List<Anime>> listAll() {
-        log.info(dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
         return ResponseEntity.ok(animeService.listAllNonPageable());
     }
 
@@ -43,7 +38,7 @@ public class AnimeController {
     }
 
     @GetMapping(path = "/find")
-    public ResponseEntity<List<Anime>> findById(@RequestParam String name) {
+    public ResponseEntity<List<Anime>> findByName(@RequestParam String name) {
         return ResponseEntity.ok(animeService.findByName(name));
     }
 
